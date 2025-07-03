@@ -40,28 +40,24 @@ const TeachersSection: React.FC = () => {
       logo: null,
       logoClass: '',
       img: '/assets/img/Olimjon.png',
-      universityLogo: '/assets/uni-logos/Harvard_logo-5.svg',
     },
     {
       id: 'teacher2',
       logo: '/assets/img/KAIST.png',
       logoClass: 'right',
       img: '/assets/img/Azizbek.png',
-      universityLogo: '/assets/uni-logos/Duke-University-Logo-1.svg',
     },
     {
       id: 'teacher3',
       logo: '/assets/img/CMUQ.png',
       logoClass: '',
       img: '/assets/img/Aruzhan.png',
-      universityLogo: '/assets/uni-logos/Vanderbilt-University-Logo-SVG_014.svg',
     },
     {
       id: 'teacher4',
       logo: '/assets/img/CMUQ.png',
       logoClass: 'right',
       img: '/assets/img/Eldor.PNG',
-      universityLogo: '/assets/img/Amherst.jpg',
     },
   ];
 
@@ -71,18 +67,6 @@ const TeachersSection: React.FC = () => {
       <div className="teachers-container">
         <div data-animate="center">
           <h2>{t('teachers-title')}</h2>
-          <div className="university-logos-row" style={{
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            gap: '32px',
-            margin: '24px 0 32px 0'
-          }}>
-            <img src="/assets/uni-logos/Harvard_logo-5.svg" alt="Harvard logo" style={{ height: 48 }} />
-            <img src="/assets/uni-logos/Duke-University-Logo-1.svg" alt="Duke logo" style={{ height: 48 }} />
-            <img src="/assets/uni-logos/Vanderbilt-University-Logo-SVG_014.svg" alt="Vanderbilt logo" style={{ height: 48 }} />
-            <img src="/assets/img/Amherst.jpg" alt="Amherst logo" style={{ height: 48, borderRadius: 8 }} />
-          </div>
         </div>
         <div className="teacher-list">
           {teacherData.slice(0, 3).map((teacher, idx) => (
@@ -93,27 +77,7 @@ const TeachersSection: React.FC = () => {
               key={teacher.id}
               style={{ position: 'relative' }}
             >
-              {/* University Logo (top-right) */}
-              {teacher.universityLogo && (
-                <img
-                  src={teacher.universityLogo}
-                  alt="University logo"
-                  aria-label="University logo"
-                  style={{
-                    position: 'absolute',
-                    top: 16,
-                    right: 16,
-                    width: 48,
-                    height: 48,
-                    borderRadius: 8,
-                    background: '#fff',
-                    padding: 4,
-                    zIndex: 2,
-                    boxShadow: '0 2px 8px rgba(80, 40, 120, 0.10)',
-                  }}
-                />
-              )}
-              {/* Existing logo if any */}
+              {/* Only show logo if present (not universityLogo) */}
               {teacher.logo && (
                 <img className={`teacher-logo-corner${teacher.logoClass ? ' ' + teacher.logoClass : ''}`} src={teacher.logo} alt={t(`${teacher.id}-logo-alt`)} />
               )}
@@ -187,17 +151,17 @@ const TeachersSection: React.FC = () => {
             >
               {swiperTeachers.map((teacher, idx) => (
                 <SwiperSlide key={teacher.id + idx}>
-                  <div className="teacherimg-swiper-slide" style={{ position: 'relative' }}>
+                  <div className="teacherimg-swiper-slide" style={{ position: 'relative', borderRadius: 24, overflow: 'hidden' }}>
                     {teacher.universityLogo && (
                       <img
                         src={teacher.universityLogo}
                         alt="University logo"
                         style={{
                           position: 'absolute',
-                          top: 12,
-                          right: 12,
-                          width: 96,
-                          height: 96,
+                          top: 16,
+                          right: 16,
+                          width: 72,
+                          height: 72,
                           borderRadius: 16,
                           background: '#fff',
                           padding: 8,
